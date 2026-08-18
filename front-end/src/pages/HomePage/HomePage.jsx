@@ -3,166 +3,86 @@ import { useNavigate } from "react-router";
 import "./HomePage.css";
 
 function HomePage() {
-    const navigate = useNavigate();
-
-    const [resumeFile, setResumeFile] = useState(null);
-    const [jobDescription, setJobDescription] = useState("");
-
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        if (!resumeFile || !jobDescription.trim()) {
-            alert("Envie seu currículo e informe a descrição da vaga.");
-            return;
-        }
-
-        navigate("/analysis", {
-            state: {
-                resumeFile,
-                jobDescription
-            }
-        });
-    }
-
     return (
-        <main className="home-page">
-            <section className="hero">
-                <div className="hero-content">
-                    <span className="hero-tag">
-                        Análise inteligente de currículo
-                    </span>
+        <div className="home-page">
+            <section className="home-hero">
+                <h1>Miragen</h1>
 
-                    <h1>
-                        Descubra o quanto seu currículo combina com a vaga
-                    </h1>
-
-                    <p>
-                        Envie seu currículo e a descrição da vaga para analisar
-                        suas habilidades, experiências e compatibilidade com a
-                        oportunidade.
-                    </p>
-                </div>
+                <p className="home-subtitle">
+                    Uma forma simples de entender o quanto seu currículo
+                    está alinhado com uma oportunidade.
+                </p>
             </section>
 
-            <section className="upload-section">
-                <div className="upload-card">
+            <section className="home-section">
+                <h2>O que é o Miragen?</h2>
 
-                    <div className="card-header">
-                        <h2>Analise seu currículo</h2>
+                <p>
+                    O Miragen é uma plataforma criada para ajudar candidatos
+                    a analisarem a compatibilidade entre seus currículos e
+                    vagas de emprego.
+                </p>
 
-                        <p>
-                            Preencha as informações abaixo para começar.
-                        </p>
-                    </div>
-
-                    <form onSubmit={handleSubmit}>
-
-                        <div className="form-group">
-                            <label htmlFor="resume">
-                                Seu currículo
-                            </label>
-
-                            <label
-                                htmlFor="resume"
-                                className="file-upload"
-                            >
-                                <span className="upload-icon">
-                                    ↑
-                                </span>
-
-                                <div>
-                                    <strong>
-                                        {resumeFile
-                                            ? resumeFile.name
-                                            : "Clique para enviar seu currículo"
-                                        }
-                                    </strong>
-
-                                    {!resumeFile && (
-                                        <p>
-                                            PDF ou DOCX
-                                        </p>
-                                    )}
-                                </div>
-                            </label>
-
-                            <input
-                                id="resume"
-                                type="file"
-                                accept=".pdf,.doc,.docx"
-                                onChange={(e) =>
-                                    setResumeFile(e.target.files[0])
-                                }
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="jobDescription">
-                                Descrição da vaga
-                            </label>
-
-                            <textarea
-                                id="jobDescription"
-                                placeholder="Cole aqui a descrição da vaga que deseja analisar..."
-                                value={jobDescription}
-                                onChange={(e) =>
-                                    setJobDescription(e.target.value)
-                                }
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="analyze-button"
-                        >
-                            Analisar currículo →
-                        </button>
-
-                    </form>
-                </div>
+                <p>
+                    Através da análise das informações presentes no currículo
+                    e dos requisitos descritos na vaga, a plataforma identifica
+                    pontos de compatibilidade e apresenta informações que podem
+                    ajudar o candidato a entender melhor o seu perfil em relação
+                    à oportunidade.
+                </p>
             </section>
 
-            <section className="how-it-works">
+            <section className="home-section">
                 <h2>Como funciona?</h2>
 
-                <div className="steps">
-
-                    <div className="info-step">
-                        <span>1</span>
+                <div className="home-steps">
+                    <div className="home-step">
+                        <span>01</span>
 
                         <h3>Envie seu currículo</h3>
 
                         <p>
-                            Faça upload do seu currículo.
+                            Faça o envio do seu currículo para que suas
+                            informações possam ser analisadas.
                         </p>
                     </div>
 
-                    <div className="info-step">
-                        <span>2</span>
+                    <div className="home-step">
+                        <span>02</span>
 
-                        <h3>Adicione a vaga</h3>
+                        <h3>Informe a vaga</h3>
 
                         <p>
-                            Cole a descrição da oportunidade desejada.
+                            Adicione a descrição da oportunidade que deseja
+                            comparar com o seu perfil.
                         </p>
                     </div>
 
-                    <div className="info-step">
-                        <span>3</span>
+                    <div className="home-step">
+                        <span>03</span>
 
-                        <h3>Veja o resultado</h3>
+                        <h3>Veja sua análise</h3>
 
                         <p>
-                            Descubra sua compatibilidade com a vaga.
+                            Receba uma análise da compatibilidade entre suas
+                            experiências, habilidades e os requisitos da vaga.
                         </p>
                     </div>
-
                 </div>
             </section>
-        </main>
+
+            <section className="home-section home-final">
+                <h2>Entenda melhor o seu perfil</h2>
+
+                <p>
+                    O objetivo do Miragen é tornar mais simples a análise entre
+                    o perfil profissional de um candidato e as exigências de
+                    uma oportunidade, ajudando você a identificar pontos fortes
+                    e possíveis aspectos que podem ser desenvolvidos.
+                </p>
+            </section>
+        </div>
     );
-
-
 }
 
 export default HomePage;
