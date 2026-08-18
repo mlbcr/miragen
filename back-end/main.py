@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routes.curriculo import router as curriculo_router
+from app.routes.curriculo import router as curriculo_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="miragen", description="um projeto legal")
@@ -7,7 +7,7 @@ app = FastAPI(title="miragen", description="um projeto legal")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
+        "https://miragen-one.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
